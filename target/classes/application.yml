@@ -27,6 +27,12 @@ dataplatform.cm.db.conn.timeBetweenEvictionRunsMillis: 30000
 dataplatform.cm.db.conn.numTestsPerEvictionRun: 10
 
 
+#server
 server.port: 8080
+
+#token
+jwtToken.timeout: 1800000
+jwtToken.algorithm: HS512
+jwtToken.secret: Pa@ss@Word
 
 

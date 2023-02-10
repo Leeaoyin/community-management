@@ -11,13 +11,12 @@ import org.management.core.infrastructure.repository.po.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
 @RestController
-public class LoginController {
+public class LoginController extends BaseController{
     
     
     @Autowired
@@ -29,7 +28,7 @@ public class LoginController {
         UserVO userVO = UserVO.builder()
                 .userId(user.getId())
                 .userType(user.getUserType())
-                .token("eyJhbGciOiJIUzUxMiJ9")
+                .token(tokenUtils.generateToken(user.getUserName(),user.getUserPassword()))
                 .build();
         return ResponseResult.success(userVO);
 
