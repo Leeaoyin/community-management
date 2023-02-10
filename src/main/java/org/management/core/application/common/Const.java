@@ -25,6 +25,14 @@ public final class Const {
      * Token 创建时间
      */
     public static final String TOKEN_CREATE_TIME = "token_create_time";
+    /**
+     * Token header名称
+     */
+    public static final String TOKEN_HEADER_STRING = "Token";
+    /**
+     * 当前用户
+     */
+    public static final String CURRENT_USER = "CURRENT_USER";
     
 
 
