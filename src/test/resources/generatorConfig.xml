@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+        </plugin>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://rm-ks-qa.mysql.rds.aliyuncs.com/alice?characterEncoding=utf8"
+                        userId="qa"
+                        password="NTQ0NjU5YjU0">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="org.management.core.infrastructure.repository.po" targetProject="src/main/java"/>
+
+        <sqlMapGenerator targetPackage="mybatis/"  targetProject="src/main/resources"/>
+
+        <javaClientGenerator targetPackage="org.management.core.infrastructure.repository.mapper" targetProject="src/main/java" type="XMLMAPPER" />
+
+        <table schema="community-management" tableName="user" domainObjectName="User" >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table schema="community-management" tableName="user_info" domainObjectName="UserInfo" >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table schema="community-management" tableName="apply_active" domainObjectName="ApplyActive" >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table schema="community-management" tableName="apply_material" domainObjectName="ApplyMaterial" >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+        <table schema="community-management" tableName="vaccine_order" domainObjectName="VaccineOrder" >
+            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+
+
+        </table>
+
+
+    </context>
+</generatorConfiguration>
