@@ -2,7 +2,7 @@
 dataplatform.cm.db.conn.driver-class-name: com.mysql.cj.jdbc.Driver
 dataplatform.cm.db.conn.jdbcUrl: jdbc:mysql://test-jksh.mysql.rds.aliyuncs.com:3306/community_management?characterEncoding=utf8&useSSL=false
 dataplatform.cm.db.conn.userName: qa
-dataplatform.cm.db.conn.password: JKSH45sqUTJS
+dataplatform.cm.db.conn.password: 
 dataplatform.cm.db.conn.maxActive: 200
 dataplatform.cm.db.conn.maxIdle: 30
 dataplatform.cm.db.conn.maxWait: 1000
