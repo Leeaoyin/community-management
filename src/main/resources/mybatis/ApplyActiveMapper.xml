@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.management.core.infrastructure.repository.mapper.ApplyActiveMapper">
+  <resultMap id="BaseResultMap" type="org.management.core.infrastructure.repository.po.ApplyActive">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="active_type" jdbcType="TINYINT" property="activeType" />
+    <result column="active_time" jdbcType="TIMESTAMP" property="activeTime" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="family_friend" jdbcType="VARCHAR" property="familyFriend" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+</mapper>
