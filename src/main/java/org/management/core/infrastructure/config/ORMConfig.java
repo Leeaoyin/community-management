@@ -15,15 +15,17 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import tk.mybatis.spring.annotation.MapperScan;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
+import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
 @MapperScan(value = "org.management.core.infrastructure.repository.mapper",
-        sqlSessionFactoryRef = "aliceSqlSessionFactory")
+        sqlSessionFactoryRef = "cmSqlSessionFactory")
 public class ORMConfig {
-    @Autowired
-    private PageInterceptor pageInterceptor;
+//    @Resource
+//    private PageInterceptor pageInterceptor;
 
     @Bean(name = "cmDataSource")
     @ConfigurationProperties(prefix = "dataplatform.cm.db.conn")
@@ -33,13 +35,19 @@ public class ORMConfig {
 
     @Bean(name = "cmSqlSessionFactory")
     public SqlSessionFactory aliceSqlSessionFactory(@Qualifier("cmDataSource") DataSource dataSource) throws Exception {
-        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-        sqlSessionFactoryBean.setDataSource(dataSource);
-        sqlSessionFactoryBean.setPlugins(new Interceptor[]{pageInterceptor});
-        sqlSessionFactoryBean.setTypeAliasesPackage("org.management.core.infrastructure.repository.po");
-        sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mybatis/*Mapper.xml"));
-        sqlSessionFactoryBean.setConfigLocation(new PathMatchingResourcePatternResolver().getResource("classpath:mybatis/cm-mybatis-config.xml"));
-        return sqlSessionFactoryBean.getObject();
+        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
+        bean.setDataSource(dataSource);
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mybatis/*.xml"));
+        Properties properties = new Properties();
+        properties.setProperty("reasonable", "true");
+        properties.setProperty("supportMethodsArguments", "true");
+        properties.setProperty("returnPageInfo", "check");
+        properties.setProperty("params", "count=countSql");
+        PageInterceptor pageHelper = new PageInterceptor();
+        pageHelper.setProperties(properties);
+        // 添加分页插件
+        bean.setPlugins(new Interceptor[]{pageHelper});
+        return bean.getObject();
     }
 
 
