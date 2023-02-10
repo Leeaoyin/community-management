@@ -1,0 +1,32 @@
+## mysql
+dataplatform.cm.db.conn.driver-class-name: com.mysql.cj.jdbc.Driver
+dataplatform.cm.db.conn.jdbcUrl: jdbc:mysql://test-jksh.mysql.rds.aliyuncs.com:3306/community_management?characterEncoding=utf8&useSSL=false
+dataplatform.cm.db.conn.userName: qa
+dataplatform.cm.db.conn.password: NTQ0NjU5YjU0
+dataplatform.cm.db.conn.maxActive: 200
+dataplatform.cm.db.conn.maxIdle: 30
+dataplatform.cm.db.conn.maxWait: 1000
+dataplatform.cm.db.conn.autocommit: true
+#最小空闲数
+dataplatform.cm.db.conn.minIdle: 1
+#初始化连接数,如果不设置,当容器启动后,会随着连接的数量逐个增加
+dataplatform.cm.db.conn.initialSize: 1
+#连接泄漏回收参数,是否自动回收超时连接
+dataplatform.cm.db.conn.removeAbandoned: true
+#连接泄漏回收参数,泄露的连接可以被删除的超时值,超时时间(以秒数为单位)
+dataplatform.cm.db.conn.removeAbandonedTimeout: 180
+#验证使用的SQL语句
+dataplatform.cm.db.conn.validationQuery: SELECT 1
+#指明连接是否被空闲连接回收器(如果有)进行检验,如果检测失败,则连接将被从池中去除
+dataplatform.cm.db.conn.testWhileIdle: true
+#借出连接时不要测试,否则很影响性能
+dataplatform.cm.db.conn.testOnBorrow: false
+#每30秒运行一次空闲连接回收器
+dataplatform.cm.db.conn.timeBetweenEvictionRunsMillis: 30000
+#在每次空闲连接回收器线程(如果有)运行时检查的连接数量
+dataplatform.cm.db.conn.numTestsPerEvictionRun: 10
+
+
+server.port: 8080
+
+

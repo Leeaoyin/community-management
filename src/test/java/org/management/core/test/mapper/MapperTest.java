@@ -2,10 +2,12 @@ package org.management.core.test.mapper;
 
 import org.junit.Test;
 import org.management.core.infrastructure.repository.mapper.UserMapper;
+import org.management.core.infrastructure.repository.po.User;
 import org.management.core.test.BaseTest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 public class MapperTest extends BaseTest {
 
@@ -14,6 +16,7 @@ public class MapperTest extends BaseTest {
 
     @Test
     public void testUser(){
-        System.out.println(userMapper.selectAll());
+        List<User> users = userMapper.selectAll();
+        users.forEach(e-> System.out.println(e.getUserName()));
     }
 }
