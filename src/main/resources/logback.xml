@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+<!--    <include resource="org/springframework/boot/logging/logback/file-appender.xml" />-->
+
+    <springProperty scope="context" name="logging.path" source="logging.path"/>
+    <contextName>proxyIp</contextName>
+
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] [%thread] %highlight([%-5level] %logger{50} - %msg%n)</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+<!--    &lt;!&ndash; 下面配置一些第三方包的日志过滤级别，用于避免刷屏 &ndash;&gt;-->
+<!--    <logger name="org.springframework" level="WARN"/>-->
+<!--    <logger name="org.apache" level="WARN"/>-->
+<!--    <logger name="httpclient" level="WARN"/>-->
+
+    <root level="INFO">
+        <appender-ref ref="consoleLog" />
+    </root>
+
+</configuration>
