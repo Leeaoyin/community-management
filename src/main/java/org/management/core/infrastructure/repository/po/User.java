@@ -1,11 +1,15 @@
 package org.management.core.infrastructure.repository.po;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import javax.persistence.*;
 
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     /**
      * user id

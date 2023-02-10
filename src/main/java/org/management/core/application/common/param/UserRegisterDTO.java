@@ -4,6 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Data
@@ -14,7 +15,7 @@ public class UserRegisterDTO implements Serializable {
     private String username;
     @NotBlank(message = "密码不能为空")
     private String password;
-    @NotBlank(message = "用户类型不能为空")
+    @NotNull(message = "用户类型不能为空")
     private Integer usertype;
     
     

@@ -10,7 +10,7 @@
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="vaccine_name" jdbcType="VARCHAR" property="vaccineName" />
     <result column="order_time" jdbcType="TIMESTAMP" property="orderTime" />
-    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="state" jdbcType="INTEGER" property="state" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>

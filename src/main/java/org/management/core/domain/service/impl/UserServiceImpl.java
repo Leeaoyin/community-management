@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import tk.mybatis.mapper.entity.Example;
 
+import java.util.Date;
 import java.util.Objects;
 
 @Service
@@ -47,6 +48,7 @@ public class UserServiceImpl implements UserService {
                 .userName(userRegisterDTO.getUsername())
                 .userPassword(userRegisterDTO.getPassword())
                 .userType(userRegisterDTO.getUsertype())
+                .createTime(new Date())
                 .build();
         userMapper.insertSelective(user);
         return user;

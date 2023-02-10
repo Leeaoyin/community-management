@@ -28,8 +28,7 @@ public class UserServiceTest extends BaseTest {
     
     @Test
     public void testToken(){
-        String token  = "eyJhbGciOiJIUzUxMiJ9.eyJ0b2tlbl9jcmVhdGVfdGltZSI6MTY3NjAxOTE3NDQ1Niwic3ViIjoicm9vdCIsInRva2VuX3VzZXJfbmFtZSI6InJvb3QiLCJleHAiOjE2NzYwMjA5NzQsInRva2VuX3VzZXJfcGFzc3dvcmQiOiIxMjM0NTYifQ.Z4rJlSN9BgHmijfn94qkF_zpQuWpgOhfIE2nG9j7z2gW-Ar1OOQKU7EPQGOWj9hfyMBvCZfVw64aTnAYEF9vRQ";
-        String username = tokenUtils.getUsername(token);
-        System.out.println(username);
+        User user = userService.getByUserName("root");
+        System.out.println(user.getCreateTime());
     }
 }
