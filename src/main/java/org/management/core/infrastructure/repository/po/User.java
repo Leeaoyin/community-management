@@ -1,8 +1,11 @@
 package org.management.core.infrastructure.repository.po;
 
+import lombok.Builder;
+
 import java.util.Date;
 import javax.persistence.*;
 
+@Builder
 public class User {
     /**
      * user id
@@ -27,7 +30,7 @@ public class User {
      * 0:administrator，1:ordinary user
      */
     @Column(name = "user_type")
-    private Byte userType;
+    private Integer userType;
 
     /**
      * create time
@@ -100,7 +103,7 @@ public class User {
      *
      * @return user_type - 0:administrator，1:ordinary user
      */
-    public Byte getUserType() {
+    public Integer getUserType() {
         return userType;
     }
 
@@ -109,7 +112,7 @@ public class User {
      *
      * @param userType 0:administrator，1:ordinary user
      */
-    public void setUserType(Byte userType) {
+    public void setUserType(Integer userType) {
         this.userType = userType;
     }
 

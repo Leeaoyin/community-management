@@ -35,7 +35,7 @@ public class VaccineOrder {
     /**
      * 是否过期，0未过期/1已过期
      */
-    private Byte state;
+    private Integer state;
 
     /**
      * 创建时间
@@ -140,7 +140,7 @@ public class VaccineOrder {
      *
      * @return state - 是否过期，0未过期/1已过期
      */
-    public Byte getState() {
+    public Integer getState() {
         return state;
     }
 
@@ -149,7 +149,7 @@ public class VaccineOrder {
      *
      * @param state 是否过期，0未过期/1已过期
      */
-    public void setState(Byte state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 

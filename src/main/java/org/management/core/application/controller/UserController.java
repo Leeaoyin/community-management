@@ -2,8 +2,8 @@ package org.management.core.application.controller;
 
 
 import org.management.core.application.common.Const;
-import org.management.core.application.common.enums.HttpCodeEnum;
 import org.management.core.application.common.param.UserEntriesDTO;
+import org.management.core.application.common.param.UserRegisterDTO;
 import org.management.core.application.common.param.result.ResponseResult;
 import org.management.core.application.common.param.vo.UserVO;
 import org.management.core.domain.service.UserService;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-public class LoginController extends BaseController{
+public class UserController extends BaseController{
     
     
     @Autowired
@@ -32,5 +32,12 @@ public class LoginController extends BaseController{
                 .build();
         return ResponseResult.success(userVO);
 
+    }
+    
+    
+    @PostMapping(Const.API_URL + "/register")
+    public ResponseResult<User> register(@RequestBody @Valid UserRegisterDTO userRegisterDTO){
+        User user = userService.userRegister(userRegisterDTO);
+        return ResponseResult.success(user);
     }
 }

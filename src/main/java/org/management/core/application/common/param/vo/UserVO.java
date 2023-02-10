@@ -13,6 +13,6 @@ import java.io.Serializable;
 public class UserVO implements Serializable {
     
     private Integer userId;
-    private Byte userType;
+    private Integer userType;
     private String token;
 }

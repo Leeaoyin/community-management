@@ -7,11 +7,11 @@
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
-    <result column="active_type" jdbcType="TINYINT" property="activeType" />
+    <result column="active_type" jdbcType="INTEGER" property="activeType" />
     <result column="active_time" jdbcType="TIMESTAMP" property="activeTime" />
     <result column="reason" jdbcType="VARCHAR" property="reason" />
     <result column="family_friend" jdbcType="VARCHAR" property="familyFriend" />
-    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="state" jdbcType="INTEGER" property="state" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>

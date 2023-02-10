@@ -19,7 +19,7 @@ public class ApplyActive {
      * 0:外出，1:进入
      */
     @Column(name = "active_type")
-    private Byte activeType;
+    private Integer activeType;
 
     /**
      * 外出/进入时间
@@ -41,7 +41,7 @@ public class ApplyActive {
     /**
      * 状态，0未审核/1审核通过
      */
-    private Byte state;
+    private Integer state;
 
     /**
      * create time
@@ -92,7 +92,7 @@ public class ApplyActive {
      *
      * @return active_type - 0:外出，1:进入
      */
-    public Byte getActiveType() {
+    public Integer getActiveType() {
         return activeType;
     }
 
@@ -101,7 +101,7 @@ public class ApplyActive {
      *
      * @param activeType 0:外出，1:进入
      */
-    public void setActiveType(Byte activeType) {
+    public void setActiveType(Integer activeType) {
         this.activeType = activeType;
     }
 
@@ -164,7 +164,7 @@ public class ApplyActive {
      *
      * @return state - 状态，0未审核/1审核通过
      */
-    public Byte getState() {
+    public Integer getState() {
         return state;
     }
 
@@ -173,7 +173,7 @@ public class ApplyActive {
      *
      * @param state 状态，0未审核/1审核通过
      */
-    public void setState(Byte state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 

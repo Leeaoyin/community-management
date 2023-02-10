@@ -41,7 +41,7 @@ public class UserInfo {
      * 健康状态：0康/1病
      */
     @Column(name = "health_state")
-    private Byte healthState;
+    private Integer healthState;
 
     /**
      * 创建时间
@@ -164,7 +164,7 @@ public class UserInfo {
      *
      * @return health_state - 健康状态：0康/1病
      */
-    public Byte getHealthState() {
+    public Integer getHealthState() {
         return healthState;
     }
 
@@ -173,7 +173,7 @@ public class UserInfo {
      *
      * @param healthState 健康状态：0康/1病
      */
-    public void setHealthState(Byte healthState) {
+    public void setHealthState(Integer healthState) {
         this.healthState = healthState;
     }
 

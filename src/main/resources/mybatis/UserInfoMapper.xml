@@ -11,7 +11,7 @@
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="room_number" jdbcType="INTEGER" property="roomNumber" />
-    <result column="health_state" jdbcType="TINYINT" property="healthState" />
+    <result column="health_state" jdbcType="INTEGER" property="healthState" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
