@@ -16,11 +16,5 @@ import java.util.Date;
 @NoArgsConstructor
 public class ActiveVO implements Serializable {
     
-    private Integer activeid;
-    private Integer userid;
-    private Integer activetype;
-    private Date activetime;
-    private String reason;
-    private Integer state;
-    private Date createtime;
+    private Boolean isSuccess;
 }
