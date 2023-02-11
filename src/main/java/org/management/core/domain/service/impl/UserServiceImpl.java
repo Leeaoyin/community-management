@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import tk.mybatis.mapper.entity.Example;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.Objects;
 
@@ -19,7 +20,7 @@ import java.util.Objects;
 public class UserServiceImpl implements UserService {
 
 
-    @Autowired
+    @Resource
     UserMapper userMapper;
     @Override
     public User userLogin(UserEntriesDTO userEntriesDTO) {
