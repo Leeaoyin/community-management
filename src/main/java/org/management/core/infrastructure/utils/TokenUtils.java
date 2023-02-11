@@ -204,7 +204,7 @@ public class TokenUtils {
      * @param token
      * @return
      */
-    private Boolean isExpired(String token) {
+    public Boolean isExpired(String token) {
         final Date expiration = getExpirationDate(token);
         //超时时间为空则永久有效
         return null == expiration ? false : expiration.before(new Date(System.currentTimeMillis()));

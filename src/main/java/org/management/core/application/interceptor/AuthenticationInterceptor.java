@@ -1,5 +1,6 @@
 package org.management.core.application.interceptor;
 
+import lombok.extern.slf4j.Slf4j;
 import org.management.core.application.common.Const;
 import org.management.core.domain.service.UserService;
 import org.management.core.infrastructure.repository.po.User;
@@ -10,7 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Objects;
 
+@Slf4j
 public class AuthenticationInterceptor implements HandlerInterceptor {
     
     @Autowired 
@@ -23,6 +26,10 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         
         String token = request.getHeader(Const.TOKEN_HEADER_STRING);
+        if (Objects.isNull(token) || tokenUtils.isExpired(token)) {
+            log.error("{},request token error", request.getServletPath());
+            return false;
+        }
         String username  = tokenUtils.getUsername(token);
         User user = userService.getByUserName(username);
         request.setAttribute(Const.CURRENT_USER,user);

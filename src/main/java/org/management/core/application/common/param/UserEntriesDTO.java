@@ -1,13 +1,17 @@
 package org.management.core.application.common.param;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserEntriesDTO implements Serializable {
 
     @NotBlank(message = "用户名不能为空")
