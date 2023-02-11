@@ -20,10 +20,12 @@ public class ApplyActiveServiceTest extends BaseTest {
         User user = new User(1,"root","123456",1,null,null);
         List<ApplyActive> applyActives = new ArrayList<>();
         ApplyActive applyActive = new ApplyActive();
+        
         applyActive.setActiveType(1);
         applyActive.setActiveTime(new Date());
-        applyActive.setReason("测试测试测试测试");
-        applyActive.setFamilyFriend("['大舅','二舅','四婶','小姨子']");
+        applyActive.setReason("出去买麻辣烫");
+//        applyActive.setFamilyFriend("['大舅','二舅','四婶','小姨子']");
+        
         applyActives.add(applyActive);
         Boolean aBoolean = applyActiveService.addActives(user, applyActives);
         System.out.println(aBoolean);

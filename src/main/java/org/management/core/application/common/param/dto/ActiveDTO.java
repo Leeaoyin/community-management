@@ -17,8 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 public class ActiveDTO implements Serializable {
     
-    @NotNull(message = "用户id不能为空")
-    private Integer userid;
+//    @NotNull(message = "用户id不能为空")
+//    private Integer userid;
     @NotNull(message = "活动类型不能为空")
     private Integer activetype;
     @NotNull(message = "活动时间不能为空")

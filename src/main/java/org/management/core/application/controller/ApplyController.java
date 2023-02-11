@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class ApplyController extends BaseController{
@@ -20,7 +21,7 @@ public class ApplyController extends BaseController{
     
     
     @PostMapping(value = Const.API_URL+"applyActive")
-    public ResponseResult<ActiveVO> applyActive(@CurrentUser User user, @RequestBody @Valid ActiveDTO activeDTO){
+    public ResponseResult<ActiveVO> applyActive(@CurrentUser User user, @RequestBody @Valid List<ActiveDTO> activeDTOList){
         
         
         return null;
