@@ -1,10 +1,9 @@
 package org.management.core.domain.service.impl;
 
-import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.management.core.application.common.exception.ServerException;
-import org.management.core.application.common.param.UserEntriesDTO;
-import org.management.core.application.common.param.UserRegisterDTO;
+import org.management.core.application.common.param.dto.UserEntriesDTO;
+import org.management.core.application.common.param.dto.UserRegisterDTO;
 import org.management.core.domain.service.UserService;
 import org.management.core.infrastructure.repository.mapper.UserMapper;
 import org.management.core.infrastructure.repository.po.User;

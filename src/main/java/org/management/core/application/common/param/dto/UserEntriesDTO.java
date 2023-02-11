@@ -1,4 +1,4 @@
-package org.management.core.application.common.param;
+package org.management.core.application.common.param.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

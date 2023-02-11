@@ -6,7 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.management.core.application.common.Const;
+import org.management.core.domain.event.Const;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +18,7 @@ import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.management.core.application.common.Const.EMPTY;
+import static org.management.core.domain.event.Const.EMPTY;
 
 @Slf4j
 @Component
@@ -187,7 +187,7 @@ public class TokenUtils {
      * @param token
      * @return
      */
-    private Date getExpirationDate(String token) {
+    public Date getExpirationDate(String token) {
         Date expiration = null;
         try {
             final Claims claims = getClaims(token);

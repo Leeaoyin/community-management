@@ -1,7 +1,7 @@
 package org.management.core.application.common.param.result;
 
 import lombok.*;
-import org.management.core.application.common.Const;
+import org.management.core.domain.event.Const;
 import org.management.core.application.common.enums.HttpCodeEnum;
 
 import java.io.Serializable;

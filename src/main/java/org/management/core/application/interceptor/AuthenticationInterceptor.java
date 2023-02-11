@@ -1,7 +1,7 @@
 package org.management.core.application.interceptor;
 
 import lombok.extern.slf4j.Slf4j;
-import org.management.core.application.common.Const;
+import org.management.core.domain.event.Const;
 import org.management.core.domain.service.UserService;
 import org.management.core.infrastructure.repository.po.User;
 import org.management.core.infrastructure.utils.TokenUtils;
@@ -26,7 +26,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         
         String token = request.getHeader(Const.TOKEN_HEADER_STRING);
-        if (Objects.isNull(token) || tokenUtils.isExpired(token)) {
+        if (Objects.isNull(token)) {
             log.error("{},request token error", request.getServletPath());
             return false;
         }

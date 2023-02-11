@@ -19,7 +19,7 @@
 
 package org.management.core.application.interceptor;
 
-import org.management.core.application.common.Const;
+import org.management.core.domain.event.Const;
 import org.management.core.application.common.annotation.CurrentUser;
 import org.management.core.infrastructure.repository.po.User;
 import org.springframework.core.MethodParameter;

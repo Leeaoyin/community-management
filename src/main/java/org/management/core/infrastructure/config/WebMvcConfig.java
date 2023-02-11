@@ -4,10 +4,9 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.ValueFilter;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import org.management.core.application.common.Const;
+import org.management.core.domain.event.Const;
 import org.management.core.application.interceptor.AuthenticationInterceptor;
 import org.management.core.application.interceptor.CurrentUserMethodArgumentResolver;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -20,7 +19,7 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.management.core.application.common.Const.EMPTY;
+import static org.management.core.domain.event.Const.EMPTY;
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurationSupport {
     

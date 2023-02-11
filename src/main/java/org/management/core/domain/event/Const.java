@@ -1,4 +1,4 @@
-package org.management.core.application.common;
+package org.management.core.domain.event;
 
 
 public final class Const {

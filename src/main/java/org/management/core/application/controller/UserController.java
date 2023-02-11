@@ -1,9 +1,9 @@
 package org.management.core.application.controller;
 
 
-import org.management.core.application.common.Const;
-import org.management.core.application.common.param.UserEntriesDTO;
-import org.management.core.application.common.param.UserRegisterDTO;
+import org.management.core.domain.event.Const;
+import org.management.core.application.common.param.dto.UserEntriesDTO;
+import org.management.core.application.common.param.dto.UserRegisterDTO;
 import org.management.core.application.common.param.result.ResponseResult;
 import org.management.core.application.common.param.vo.UserVO;
 import org.management.core.domain.service.UserService;
@@ -28,7 +28,7 @@ public class UserController extends BaseController{
         UserVO userVO = UserVO.builder()
                 .userId(user.getId())
                 .userType(user.getUserType())
-                .token(tokenUtils.generateToken(user.getUserName(),user.getUserPassword()))
+                .token(tokenUtils.generateContinuousToken(user.getUserName(),user.getUserPassword()))
                 .build();
         return ResponseResult.success(userVO);
 
