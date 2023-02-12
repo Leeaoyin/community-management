@@ -6,6 +6,7 @@
       WARNING - @mbg.generated
     -->
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="material_name" jdbcType="VARCHAR" property="materialName" />
     <result column="num" jdbcType="INTEGER" property="num" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
