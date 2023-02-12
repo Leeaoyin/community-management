@@ -10,7 +10,7 @@ public class ActiveHandler {
         applyActive.setActiveType(activeDTO.getActivetype());
         applyActive.setActiveTime(activeDTO.getActivetime());
         applyActive.setReason(activeDTO.getReason());
-        applyActive.setFamilyFriend(applyActive.getFamilyFriend());
+        applyActive.setFamilyFriend(activeDTO.getFamilyfriend().toString());
         return applyActive;
     }
     

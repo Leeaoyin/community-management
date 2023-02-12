@@ -26,7 +26,7 @@ public class ApplyController extends BaseController{
     @Autowired
     ApplyActiveService applyActiveService;
     
-    @PostMapping(value = Const.API_URL+"applyActive")
+    @PostMapping(value = Const.API_URL+"/applyActive")
     public ResponseResult<ActiveVO> applyActive(@CurrentUser User user, @RequestBody @Valid List<ActiveDTO> activeDTOList){
         List<ApplyActive> serviceParam = new ArrayList<>(activeDTOList.size());
         activeDTOList.forEach(e-> serviceParam.add(ActiveHandler.convertDTO2pojo(e)));

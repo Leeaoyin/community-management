@@ -6,6 +6,7 @@ import org.management.core.domain.service.UserService;
 import org.management.core.infrastructure.repository.po.User;
 import org.management.core.infrastructure.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Objects;
 
 @Slf4j
+@Component
 public class AuthenticationInterceptor implements HandlerInterceptor {
     
     @Autowired 

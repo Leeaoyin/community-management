@@ -4,9 +4,11 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.serializer.ValueFilter;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import org.management.core.application.interceptor.RequestJsonHandlerArgumentResolver;
 import org.management.core.domain.event.Const;
 import org.management.core.application.interceptor.AuthenticationInterceptor;
 import org.management.core.application.interceptor.CurrentUserMethodArgumentResolver;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -24,11 +26,22 @@ import static org.management.core.domain.event.Const.EMPTY;
 public class WebMvcConfig extends WebMvcConfigurationSupport {
     
     
-    
+    @Bean
     public AuthenticationInterceptor loginRequiredInterceptor(){
         return new AuthenticationInterceptor();
     }
+
+    /**
+     * JsonParam 参数解析器
+     *
+     * @return
+     */
+    @Bean
+    public RequestJsonHandlerArgumentResolver requestJsonHandlerArgumentResolver() {
+        return new RequestJsonHandlerArgumentResolver();
+    }
     
+    @Bean
     public CurrentUserMethodArgumentResolver currentUserMethodArgumentResolver(){
         return new CurrentUserMethodArgumentResolver();
     }
@@ -48,6 +61,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     @Override
     protected void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(currentUserMethodArgumentResolver());
+        argumentResolvers.add(requestJsonHandlerArgumentResolver());
         super.addArgumentResolvers(argumentResolvers);
     }
 
