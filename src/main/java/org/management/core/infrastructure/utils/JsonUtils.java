@@ -26,20 +26,4 @@ public final class JsonUtils {
             throw new RuntimeException(e);
         }
     }
-
-    public static <T> T from(String json, Class<T> clazz) {
-        try {
-            return objectMapper.readValue(json, clazz);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static <T> List<T> fromList(String json) {
-        try {
-            return objectMapper.readValue(json, new TypeReference<List<T>>() {});
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
