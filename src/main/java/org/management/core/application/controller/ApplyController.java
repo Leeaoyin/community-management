@@ -31,9 +31,9 @@ public class ApplyController extends BaseController{
         List<ApplyActive> serviceParam = new ArrayList<>(activeDTOList.size());
         activeDTOList.forEach(e-> serviceParam.add(ActiveHandler.convertDTO2pojo(e)));
         if (applyActiveService.addActives(user, serviceParam))
-        return ResponseResult.success(ActiveVO.builder().isSuccess(true).build());
+        return ResponseResult.success(ActiveVO.builder().success(true).build());
         else
-        return ResponseResult.success(ActiveVO.builder().isSuccess(false).build());
+        return ResponseResult.success(ActiveVO.builder().success(false).build());
     }
     
     

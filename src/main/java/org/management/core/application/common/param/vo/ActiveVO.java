@@ -16,5 +16,5 @@ import java.util.Date;
 @NoArgsConstructor
 public class ActiveVO implements Serializable {
     
-    private Boolean isSuccess;
+    private Boolean success;
 }
