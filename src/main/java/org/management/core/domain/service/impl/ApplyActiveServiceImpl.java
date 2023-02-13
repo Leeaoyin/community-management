@@ -5,6 +5,7 @@ import org.management.core.infrastructure.repository.mapper.ApplyActiveMapper;
 import org.management.core.infrastructure.repository.po.ApplyActive;
 import org.management.core.infrastructure.repository.po.User;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -38,5 +39,13 @@ public class ApplyActiveServiceImpl implements ApplyActiveService {
     @Override
     public List<ApplyActive> verifyActive(List<ApplyActive> applyActives) {
         return null;
+    }
+
+    @Override
+    public List<ApplyActive> getAll(User user) {
+        Example example = new Example(ApplyActive.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("userId", user.getId());
+        return applyActiveMapper.selectByExample(example);
     }
 }

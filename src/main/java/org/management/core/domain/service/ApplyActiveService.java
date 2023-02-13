@@ -29,4 +29,6 @@ public interface ApplyActiveService {
      * @return
      */
     List<ApplyActive> verifyActive(List<ApplyActive> applyActives);
+    
+    List<ApplyActive> getAll(User user);
 }
