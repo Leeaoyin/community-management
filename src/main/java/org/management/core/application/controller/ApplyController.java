@@ -57,7 +57,7 @@ public class ApplyController extends BaseController{
     }
     
     
-    @GetMapping(value = Const.API_URL + "getActives")
+    @GetMapping(value = Const.API_URL + "/getActives")
     public ResponseResult<List<ApplyActive>> getAllApplyActives(@CurrentUser User user){
         return ResponseResult.success(applyActiveService.getAll(user));
     }
