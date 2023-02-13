@@ -29,9 +29,13 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.selectOneByExample(example);
         if (Objects.nonNull(user)){
             boolean checked = StringUtils.equals(user.getUserPassword(),userEntriesDTO.getPassword()) ? true : false;
-            if (checked) return user;
+            if (checked) 
+                return user;
+            else   
+                throw new ServerException("密码错误");
+        }else {
+            throw new ServerException("用户名不存在");
         }
-        return user;
     }
 
     @Override
