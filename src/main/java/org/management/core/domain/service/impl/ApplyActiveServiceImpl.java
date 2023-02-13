@@ -4,7 +4,6 @@ import org.management.core.domain.service.ApplyActiveService;
 import org.management.core.infrastructure.repository.mapper.ApplyActiveMapper;
 import org.management.core.infrastructure.repository.po.ApplyActive;
 import org.management.core.infrastructure.repository.po.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

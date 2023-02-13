@@ -7,11 +7,8 @@ import org.management.core.application.common.param.dto.UserRegisterDTO;
 import org.management.core.domain.service.UserService;
 import org.management.core.infrastructure.repository.mapper.UserMapper;
 import org.management.core.infrastructure.repository.po.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import tk.mybatis.mapper.entity.Example;
-
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.Objects;
