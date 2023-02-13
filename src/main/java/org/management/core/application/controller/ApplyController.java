@@ -16,6 +16,7 @@ import org.management.core.infrastructure.repository.po.ApplyActive;
 import org.management.core.infrastructure.repository.po.ApplyMaterial;
 import org.management.core.infrastructure.repository.po.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,6 +54,12 @@ public class ApplyController extends BaseController{
             return ResponseResult.success(MaterialVO.builder().success(true).build());
         else
             return ResponseResult.success(MaterialVO.builder().success(true).build());
+    }
+    
+    
+    @GetMapping(value = Const.API_URL + "getActives")
+    public ResponseResult<List<ApplyActive>> getAllApplyActives(@CurrentUser User user){
+        return ResponseResult.success(applyActiveService.getAll(user));
     }
     
     
