@@ -30,4 +30,7 @@ public interface ApplyMaterialService {
      * @return
      */
     List<ApplyActive> verifyMaterials(List<ApplyMaterial> applyMaterials);
+    
+    
+    List<ApplyMaterial> getAll(User user);
 }

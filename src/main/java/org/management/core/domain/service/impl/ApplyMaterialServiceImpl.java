@@ -6,6 +6,7 @@ import org.management.core.infrastructure.repository.po.ApplyActive;
 import org.management.core.infrastructure.repository.po.ApplyMaterial;
 import org.management.core.infrastructure.repository.po.User;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -37,5 +38,13 @@ public class ApplyMaterialServiceImpl implements ApplyMaterialService {
     @Override
     public List<ApplyActive> verifyMaterials(List<ApplyMaterial> applyMaterials) {
         return null;
+    }
+
+    @Override
+    public List<ApplyMaterial> getAll(User user) {
+        Example example = new Example(ApplyMaterial.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("userId",user.getId());
+        return applyMaterialMapper.selectByExample(example);
     }
 }
