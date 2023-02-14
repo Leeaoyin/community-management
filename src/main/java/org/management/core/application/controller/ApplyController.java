@@ -65,7 +65,7 @@ public class ApplyController extends BaseController{
     
     @GetMapping(value = Const.API_URL+"/getMaterials")
     public ResponseResult<List<ApplyMaterial>> getAllMaterials(@CurrentUser User user){
-        
+        return ResponseResult.success(applyMaterialService.getAll(user));
     }
     
     
