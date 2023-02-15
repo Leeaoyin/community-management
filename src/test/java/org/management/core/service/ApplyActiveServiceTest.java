@@ -1,10 +1,10 @@
-package org.management.core.test.service;
+package org.management.core.service;
 
 import org.junit.Test;
 import org.management.core.domain.service.ApplyActiveService;
 import org.management.core.infrastructure.repository.po.ApplyActive;
 import org.management.core.infrastructure.repository.po.User;
-import org.management.core.test.BaseTest;
+import org.management.core.BaseTest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;

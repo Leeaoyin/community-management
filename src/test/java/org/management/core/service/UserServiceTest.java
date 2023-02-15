@@ -1,4 +1,4 @@
-package org.management.core.test.service;
+package org.management.core.service;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -6,7 +6,7 @@ import org.management.core.application.common.param.dto.UserEntriesDTO;
 import org.management.core.domain.service.UserService;
 import org.management.core.infrastructure.repository.po.User;
 import org.management.core.infrastructure.utils.TokenUtils;
-import org.management.core.test.BaseTest;
+import org.management.core.BaseTest;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;

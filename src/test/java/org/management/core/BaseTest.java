@@ -1,4 +1,4 @@
-package org.management.core.test;
+package org.management.core;
 
 
 import org.junit.Test;

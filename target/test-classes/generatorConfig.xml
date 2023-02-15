@@ -17,7 +17,7 @@
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://test-jksh.mysql.rds.aliyuncs.com/community_management?characterEncoding=utf8"
                         userId="qa"
-                        password="NTQ0NjU5YjU0">
+                        password="JKSH45sqUTJS">
             <property name="nullCatalogMeansCurrent" value="true"/>
         </jdbcConnection>
 
@@ -27,25 +27,25 @@
 
         <javaClientGenerator targetPackage="org.management.core.infrastructure.repository.mapper" targetProject="src/main/java" type="XMLMAPPER" />
 
-        <table schema="community_management" tableName="user" domainObjectName="User" >
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
+<!--        <table schema="community_management" tableName="user" domainObjectName="User" >-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
 
-        <table schema="community_management" tableName="user_info" domainObjectName="UserInfo" >
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
+<!--        <table schema="community_management" tableName="user_info" domainObjectName="UserInfo" >-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
 
-        <table schema="community_management" tableName="apply_active" domainObjectName="ApplyActive" >
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
+<!--        <table schema="community_management" tableName="apply_active" domainObjectName="ApplyActive" >-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
 
         <table schema="community_management" tableName="apply_material" domainObjectName="ApplyMaterial" >
             <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
         </table>
 
-        <table schema="community_management" tableName="vaccine_order" domainObjectName="VaccineOrder" >
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
+<!--        <table schema="community_management" tableName="vaccine_order" domainObjectName="VaccineOrder" >-->
+<!--            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>-->
+<!--        </table>-->
 
 
 
