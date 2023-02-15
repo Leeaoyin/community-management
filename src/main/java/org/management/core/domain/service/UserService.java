@@ -9,22 +9,16 @@ public interface UserService {
 
     /**
      * login
-     * @param userEntriesDTO
-     * @return
      */
     User userLogin(UserEntriesDTO userEntriesDTO);
 
     /**
      * get user by name
-     * @param username
-     * @return
      */
     User getByUserName(String username);
 
     /**
      * register user
-     * @param userRegisterDTO
-     * @return
      */
     User userRegister(UserRegisterDTO userRegisterDTO);
 }
