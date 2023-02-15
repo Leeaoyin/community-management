@@ -88,12 +88,10 @@ public class ApplyController extends BaseController{
         if (exitAdministrator(user))
             return ResponseResult.error(HttpCodeEnum.FORBIDDEN);
         Boolean result = applyActiveService.verifyActive(ids);
-        if (result) {
+        if (result) 
             logger.info("verify those actives[{}] success", ids.toString());
             return ResponseResult.success(VerifyVO.builder().success(result).build());
-        }else{
-            return ResponseResult.error(HttpCodeEnum.FAIL);
-        }
+        
             
     }
     
