@@ -10,6 +10,8 @@ public final class Const {
     public static final Integer FAIL_CODE = 400;
     
     public static final String EMPTY = "";
+    
+    public static final Integer ADMIN_TYPE = 0;
 
     /**
      * Token 用户名

@@ -28,7 +28,7 @@ public interface ApplyActiveService {
      * @param applyActives
      * @return
      */
-    List<ApplyActive> verifyActive(List<ApplyActive> applyActives);
+    Boolean verifyActive(List<Integer> applyActives);
     
     List<ApplyActive> getAll(User user);
 }

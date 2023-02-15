@@ -2,11 +2,13 @@ package org.management.core.application.controller;
 
 
 import org.management.core.application.common.annotation.CurrentUser;
+import org.management.core.application.common.enums.HttpCodeEnum;
 import org.management.core.application.common.param.dto.ActiveDTO;
 import org.management.core.application.common.param.dto.MaterialDTO;
 import org.management.core.application.common.param.result.ResponseResult;
 import org.management.core.application.common.param.vo.ActiveVO;
 import org.management.core.application.common.param.vo.MaterialVO;
+import org.management.core.application.common.param.vo.VerifyVO;
 import org.management.core.domain.event.Const;
 import org.management.core.domain.handler.ActiveHandler;
 import org.management.core.domain.handler.MaterialHandler;
@@ -66,6 +68,14 @@ public class ApplyController extends BaseController{
     @GetMapping(value = Const.API_URL+"/getMaterials")
     public ResponseResult<List<ApplyMaterial>> getAllMaterials(@CurrentUser User user){
         return ResponseResult.success(applyMaterialService.getAll(user));
+    }
+    
+    @PostMapping(value = Const.API_URL + "/verifyActive")
+    public ResponseResult<VerifyVO> verifyActive(@CurrentUser User user, @RequestBody List<Integer> ids){
+        if (exitAdministrator(user))
+            return ResponseResult.error(HttpCodeEnum.FORBIDDEN);
+        Boolean result = applyActiveService.verifyActive(ids);
+        return ResponseResult.success(VerifyVO.builder().success(result).build());
     }
     
     

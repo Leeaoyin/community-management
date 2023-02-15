@@ -28,7 +28,7 @@ public class ApplyActiveServiceImpl implements ApplyActiveService {
                     e.setState(0);
                 })
                 .collect(Collectors.toList());
-        return applyActiveMapper.insertList(collect) > 0 ? true : false;
+        return applyActiveMapper.insertList(collect) > 0;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class ApplyActiveServiceImpl implements ApplyActiveService {
     }
 
     @Override
-    public List<ApplyActive> verifyActive(List<ApplyActive> applyActives) {
+    public Boolean verifyActive(List<Integer> applyActives) {
         return null;
     }
 
