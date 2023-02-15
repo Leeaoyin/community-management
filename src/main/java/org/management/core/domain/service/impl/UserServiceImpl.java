@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
         Example example = makeExampleByUserName(username);
         User user = userMapper.selectOneByExample(example);
         if (Objects.nonNull(user)){
-            boolean checked = StringUtils.equals(user.getUserPassword(),userEntriesDTO.getPassword()) ? true : false;
+            boolean checked = StringUtils.equals(user.getUserPassword(), userEntriesDTO.getPassword());
             if (checked) 
                 return user;
             else   
