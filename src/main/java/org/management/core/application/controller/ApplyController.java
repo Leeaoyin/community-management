@@ -50,9 +50,11 @@ public class ApplyController extends BaseController{
             logger.info("active has already applyed, wait for verifying");
             return ResponseResult.success(ActiveVO.builder().success(true).build());
         }
-        else
+        else{
             logger.error("active apply failed");
             return ResponseResult.success(ActiveVO.builder().success(false).build());
+        }
+            
     }
     
     @PostMapping(value = Const.API_URL + "/applyMaterial")
@@ -63,9 +65,10 @@ public class ApplyController extends BaseController{
             logger.info("active has already applyed,wait for verifying");
             return ResponseResult.success(MaterialVO.builder().success(true).build());
         }
-        else
+        else{
             logger.error("Material apply failed");
             return ResponseResult.success(MaterialVO.builder().success(false).build());
+        }
     }
     
     
@@ -85,8 +88,13 @@ public class ApplyController extends BaseController{
         if (exitAdministrator(user))
             return ResponseResult.error(HttpCodeEnum.FORBIDDEN);
         Boolean result = applyActiveService.verifyActive(ids);
-        if (result) logger.info("verify those actives[{}] success", ids.toString());
-        return ResponseResult.success(VerifyVO.builder().success(result).build());
+        if (result) {
+            logger.info("verify those actives[{}] success", ids.toString());
+            return ResponseResult.success(VerifyVO.builder().success(result).build());
+        }else{
+            return ResponseResult.error(HttpCodeEnum.FAIL);
+        }
+            
     }
     
     
