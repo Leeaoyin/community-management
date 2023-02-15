@@ -1,5 +1,6 @@
 package org.management.core.domain.service;
 
+import org.management.core.application.common.param.dto.VerifyDTO;
 import org.management.core.infrastructure.repository.po.ApplyActive;
 import org.management.core.infrastructure.repository.po.User;
 
@@ -25,10 +26,10 @@ public interface ApplyActiveService {
 
     /**
      * verify active's state 
-     * @param applyActives
+     * @param ids
      * @return
      */
-    Boolean verifyActive(List<Integer> applyActives);
+    Boolean verifyActive(List<VerifyDTO> ids);
     
     List<ApplyActive> getAll(User user);
 }

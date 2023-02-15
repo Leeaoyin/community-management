@@ -1,5 +1,6 @@
 package org.management.core.domain.service.impl;
 
+import org.management.core.application.common.param.dto.VerifyDTO;
 import org.management.core.domain.service.ApplyActiveService;
 import org.management.core.infrastructure.repository.mapper.ApplyActiveMapper;
 import org.management.core.infrastructure.repository.po.ApplyActive;
@@ -36,9 +37,16 @@ public class ApplyActiveServiceImpl implements ApplyActiveService {
         return null;
     }
 
+
+
     @Override
-    public Boolean verifyActive(List<Integer> applyActives) {
-        return null;
+    public Boolean verifyActive(List<VerifyDTO> ids) {
+        List<Integer> params = ids.stream().map(e->e.getId()).collect(Collectors.toList());
+        Example example = new Example(ApplyActive.class);
+        example.createCriteria().andIn("id",params);
+        ApplyActive applyActive = new ApplyActive();
+        applyActive.setState(1);
+        return applyActiveMapper.updateByExampleSelective(applyActive,example) > 0;
     }
 
     @Override

@@ -5,6 +5,7 @@ import org.management.core.application.common.annotation.CurrentUser;
 import org.management.core.application.common.enums.HttpCodeEnum;
 import org.management.core.application.common.param.dto.ActiveDTO;
 import org.management.core.application.common.param.dto.MaterialDTO;
+import org.management.core.application.common.param.dto.VerifyDTO;
 import org.management.core.application.common.param.result.ResponseResult;
 import org.management.core.application.common.param.vo.ActiveVO;
 import org.management.core.application.common.param.vo.MaterialVO;
@@ -71,7 +72,7 @@ public class ApplyController extends BaseController{
     }
     
     @PostMapping(value = Const.API_URL + "/verifyActive")
-    public ResponseResult<VerifyVO> verifyActive(@CurrentUser User user, @RequestBody List<Integer> ids){
+    public ResponseResult<VerifyVO> verifyActive(@CurrentUser User user, @RequestBody List<VerifyDTO> ids){
         if (exitAdministrator(user))
             return ResponseResult.error(HttpCodeEnum.FORBIDDEN);
         Boolean result = applyActiveService.verifyActive(ids);
