@@ -1,0 +1,52 @@
+# IntelliJ project files
+.idea
+*.iml
+*.iws
+*.ipr
+target
+out
+gen
+.git
+### Java template
+*.class
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.DS_Store
+*.log
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+alice/logs
+
+# JRebel 生成文件
+rebel.xml
+
+
+.DS_Store
+alice-webmobile/node_modules
+alice-webmobile/dist
+
+
+# local env files
+.env.local
+.env.*.local
+
+
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
