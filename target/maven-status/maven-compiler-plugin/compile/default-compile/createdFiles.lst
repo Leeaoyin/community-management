@@ -24,6 +24,7 @@ org\management\core\domain\service\impl\ApplyActiveServiceImpl.class
 org\management\core\infrastructure\utils\TokenUtils.class
 org\management\core\infrastructure\repository\mapper\ApplyActiveMapper.class
 org\management\core\application\common\param\dto\ActiveDTO$ActiveDTOBuilder.class
+org\management\core\application\common\param\vo\VerifyVO$VerifyVOBuilder.class
 org\management\core\application\controller\ApplyController.class
 org\management\core\infrastructure\repository\po\ApplyMaterial.class
 org\management\core\infrastructure\repository\po\User$UserBuilder.class
@@ -40,8 +41,10 @@ org\management\core\infrastructure\repository\po\UserInfo.class
 org\management\core\domain\service\UserInfoService.class
 org\management\core\application\common\exception\ServerException.class
 org\management\core\domain\service\impl\ApplyMaterialServiceImpl.class
+org\management\core\application\common\param\vo\VerifyVO.class
 org\management\core\application\common\param\dto\ActiveDTO.class
 org\management\core\application\common\param\vo\ActiveVO$ActiveVOBuilder.class
+org\management\core\application\common\param\dto\VerifyDTO.class
 org\management\core\application\interceptor\CurrentUserMethodArgumentResolver.class
 org\management\core\application\common\param\dto\MaterialDTO.class
 org\management\core\application\common\param\dto\UserEntriesDTO.class

@@ -1,9 +1,11 @@
 D:\IDEA\projects\community-management\src\main\java\org\management\core\application\interceptor\AuthenticationInterceptor.java
 D:\IDEA\projects\community-management\src\main\java\org\management\core\infrastructure\repository\po\ApplyMaterial.java
 D:\IDEA\projects\community-management\src\main\java\org\management\core\domain\service\ApplyActiveService.java
+D:\IDEA\projects\community-management\src\main\java\org\management\core\application\common\param\dto\VerifyDTO.java
 D:\IDEA\projects\community-management\src\main\java\org\management\core\infrastructure\repository\po\UserInfo.java
 D:\IDEA\projects\community-management\src\main\java\org\management\core\application\common\param\dto\UserRegisterDTO.java
 D:\IDEA\projects\community-management\src\main\java\org\management\core\application\controller\BaseController.java
+D:\IDEA\projects\community-management\src\main\java\org\management\core\application\common\param\vo\VerifyVO.java
 D:\IDEA\projects\community-management\src\main\java\org\management\core\application\common\param\vo\UserVO.java
 D:\IDEA\projects\community-management\src\main\java\org\management\core\infrastructure\repository\po\User.java
 D:\IDEA\projects\community-management\src\main\java\org\management\core\infrastructure\config\WebMvcConfig.java
