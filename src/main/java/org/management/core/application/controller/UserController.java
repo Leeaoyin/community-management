@@ -1,6 +1,9 @@
 package org.management.core.application.controller;
 
 
+import org.management.core.application.common.annotation.CurrentUser;
+import org.management.core.application.common.param.dto.UserInfoDTO;
+import org.management.core.application.common.param.vo.VerifyVO;
 import org.management.core.domain.event.Const;
 import org.management.core.application.common.param.dto.UserEntriesDTO;
 import org.management.core.application.common.param.dto.UserRegisterDTO;
@@ -44,5 +47,11 @@ public class UserController extends BaseController{
     public ResponseResult<User> register(@RequestBody @Valid UserRegisterDTO userRegisterDTO){
         User user = userService.userRegister(userRegisterDTO);
         return ResponseResult.success(user);
+    }
+    
+    
+    @PostMapping(Const.API_URL + "/addUserInfo")
+    public ResponseResult<VerifyVO> addUserInfo(@CurrentUser User user, @RequestBody @Valid UserInfoDTO userInfoDTO){
+        return ResponseResult.success(VerifyVO.builder().success(userService.addUserInfo(user, userInfoDTO)).build());
     }
 }

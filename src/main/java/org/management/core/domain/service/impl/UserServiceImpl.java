@@ -3,10 +3,13 @@ package org.management.core.domain.service.impl;
 import org.apache.commons.lang3.StringUtils;
 import org.management.core.application.common.exception.ServerException;
 import org.management.core.application.common.param.dto.UserEntriesDTO;
+import org.management.core.application.common.param.dto.UserInfoDTO;
 import org.management.core.application.common.param.dto.UserRegisterDTO;
 import org.management.core.domain.service.UserService;
+import org.management.core.infrastructure.repository.mapper.UserInfoMapper;
 import org.management.core.infrastructure.repository.mapper.UserMapper;
 import org.management.core.infrastructure.repository.po.User;
+import org.management.core.infrastructure.repository.po.UserInfo;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 import javax.annotation.Resource;
@@ -19,6 +22,10 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     UserMapper userMapper;
+    
+    @Resource
+    UserInfoMapper userInfoMapper;
+    
     @Override
     public User userLogin(UserEntriesDTO userEntriesDTO) {
         String username = userEntriesDTO.getUsername();
@@ -53,6 +60,19 @@ public class UserServiceImpl implements UserService {
                 .build();
         userMapper.insertSelective(user);
         return user;
+    }
+
+    @Override
+    public Boolean addUserInfo(User user, UserInfoDTO userInfoDTO) {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserName(user.getUserName());
+        userInfo.setCreateTime(new Date());
+        userInfo.setUserId(user.getId());
+        userInfo.setHealthState(userInfoDTO.getHealthstate());
+        userInfo.setRoomNumber(userInfoDTO.getRoomnumber());
+        userInfo.setEmail(userInfoDTO.getEmail());
+        userInfo.setPhone(userInfoDTO.getPhone());
+        return userInfoMapper.insert(userInfo) > 0;
     }
 
 
