@@ -67,7 +67,7 @@ public class UserController extends BaseController{
     }
     
     @PostMapping(Const.API_URL + "/reportHealth")
-    public ResponseResult<VerifyVO> reportState(@CurrentUser User user, ReportDTO reportDTO){
+    public ResponseResult<VerifyVO> reportState(@CurrentUser User user,@RequestBody @Valid ReportDTO reportDTO){
         Boolean res = userInfoService.reportHealth(user,reportDTO);
         if (res){
             logger.info("report {}`s health state success", user.getUserName());
