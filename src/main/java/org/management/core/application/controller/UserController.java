@@ -8,6 +8,8 @@ import org.management.core.application.common.param.result.ResponseResult;
 import org.management.core.application.common.param.vo.UserVO;
 import org.management.core.domain.service.UserService;
 import org.management.core.infrastructure.repository.po.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,6 +19,8 @@ import javax.validation.Valid;
 
 @RestController
 public class UserController extends BaseController{
+    
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     
     
     @Autowired
@@ -30,6 +34,7 @@ public class UserController extends BaseController{
                 .userType(user.getUserType())
                 .token(tokenUtils.generateContinuousToken(user.getUserName(),user.getUserPassword()))
                 .build();
+        logger.info("user [{}] login success!!!",user.getUserName());
         return ResponseResult.success(userVO);
 
     }
