@@ -2,6 +2,7 @@ package org.management.core.application.controller;
 
 
 import org.management.core.application.common.annotation.CurrentUser;
+import org.management.core.application.common.param.dto.ReportDTO;
 import org.management.core.application.common.param.dto.UserInfoDTO;
 import org.management.core.application.common.param.vo.VerifyVO;
 import org.management.core.domain.event.Const;
@@ -9,6 +10,7 @@ import org.management.core.application.common.param.dto.UserEntriesDTO;
 import org.management.core.application.common.param.dto.UserRegisterDTO;
 import org.management.core.application.common.param.result.ResponseResult;
 import org.management.core.application.common.param.vo.UserVO;
+import org.management.core.domain.service.UserInfoService;
 import org.management.core.domain.service.UserService;
 import org.management.core.infrastructure.repository.po.User;
 import org.slf4j.Logger;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
 
 @RestController
@@ -26,8 +29,11 @@ public class UserController extends BaseController{
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     
     
-    @Autowired
+    @Resource
     private UserService userService;
+    @Resource
+    private UserInfoService userInfoService;
+    
     
     @PostMapping(Const.API_URL+"/login")
     public ResponseResult<UserVO> login(@RequestBody @Valid UserEntriesDTO userEntriesDTO){
@@ -58,5 +64,15 @@ public class UserController extends BaseController{
             return ResponseResult.success(VerifyVO.builder().success(result).build());
         }
         return ResponseResult.success(VerifyVO.builder().success(result).build());
+    }
+    
+    @PostMapping(Const.API_URL + "/reportHealth")
+    public ResponseResult<VerifyVO> reportState(@CurrentUser User user, ReportDTO reportDTO){
+        Boolean res = userInfoService.reportHealth(user,reportDTO);
+        if (res){
+            logger.info("report {}`s health state success", user.getUserName());
+            return ResponseResult.success(VerifyVO.builder().success(res).build());
+        }
+        return ResponseResult.success(VerifyVO.builder().success(res).build());
     }
 }
