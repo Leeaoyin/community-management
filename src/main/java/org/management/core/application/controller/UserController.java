@@ -52,6 +52,11 @@ public class UserController extends BaseController{
     
     @PostMapping(Const.API_URL + "/addUserInfo")
     public ResponseResult<VerifyVO> addUserInfo(@CurrentUser User user, @RequestBody @Valid UserInfoDTO userInfoDTO){
-        return ResponseResult.success(VerifyVO.builder().success(userService.addUserInfo(user, userInfoDTO)).build());
+        Boolean result = userService.addUserInfo(user, userInfoDTO);
+        if (result){
+            logger.info("add [{}] info successfully",user.getUserName());
+            return ResponseResult.success(VerifyVO.builder().success(result).build());
+        }
+        return ResponseResult.success(VerifyVO.builder().success(result).build());
     }
 }
