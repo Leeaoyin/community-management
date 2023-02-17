@@ -64,6 +64,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean addUserInfo(User user, UserInfoDTO userInfoDTO) {
+        Example example = new Example(UserInfo.class);
+        example.createCriteria().andEqualTo("userName",user.getUserName());
+        if (Objects.nonNull(userInfoMapper.selectOneByExample(example))){
+            throw new ServerException("信息已存在");
+        }
         UserInfo userInfo = new UserInfo();
         userInfo.setUserName(user.getUserName());
         userInfo.setCreateTime(new Date());

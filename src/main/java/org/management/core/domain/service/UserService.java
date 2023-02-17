@@ -22,6 +22,12 @@ public interface UserService {
      * register user
      */
     User userRegister(UserRegisterDTO userRegisterDTO);
-    
+
+    /**
+     * add user information
+     * @param user
+     * @param userInfoDTO
+     * @return
+     */
     Boolean addUserInfo(User user, UserInfoDTO userInfoDTO);
 }
