@@ -33,7 +33,7 @@ public class ORMConfig {
     }
 
     @Bean(name = "cmSqlSessionFactory")
-    public SqlSessionFactory aliceSqlSessionFactory(@Qualifier("cmDataSource") DataSource dataSource) throws Exception {
+    public SqlSessionFactory cmSqlSessionFactory(@Qualifier("cmDataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mybatis/*.xml"));
@@ -51,7 +51,7 @@ public class ORMConfig {
 
 
     @Bean(name = "cmTransactionManager")
-    public DataSourceTransactionManager aliceTransactionManager(@Qualifier("cmDataSource") DataSource dataSource) {
+    public DataSourceTransactionManager cmTransactionManager(@Qualifier("cmDataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 }
