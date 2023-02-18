@@ -70,7 +70,7 @@ CREATE TABLE user_info (
 	PRIMARY KEY (  id  )
 ) ENGINE = INNODB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8mb3 COMMENT = '住户信息表';
 ```
-## 接口设计
+## 接口
 ### 1、权限接口
 #### 登录
 url：/api/login
