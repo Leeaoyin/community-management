@@ -1,6 +1,14 @@
 # community-management
 
-<u>一个非常简单的后台管理系统</u>
+### <u>一个非常简单的后台管理系统</u>
+
+
+<img src="https://img.shields.io/badge/-spring-brightgreen"> <img src="https://img.shields.io/badge/-Springboot-brightgreen">
+<img src="https://img.shields.io/badge/-SpringMVC-brightgreen">
+<img src="https://img.shields.io/badge/-mybatis-brightgreen">
+<img src="https://img.shields.io/badge/-tk.mapper-brightgreen">
+<img src="https://img.shields.io/badge/-JWTtoken-brightgreen">
+<img src="https://img.shields.io/badge/-Dockerfile-brightgreen">
 
  ## table design below
 ___
