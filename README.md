@@ -1,6 +1,6 @@
 # community-management
 
-### <u>一个非常简单的后台管理系统</u>
+### <u>一个后台管理系统</u>
 
 
 <img src="https://img.shields.io/badge/-spring-brightgreen"> <img src="https://img.shields.io/badge/-Springboot-brightgreen">
