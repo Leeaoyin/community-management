@@ -38,7 +38,7 @@ public class ApplyController extends BaseController{
     
     private static final Logger logger = LoggerFactory.getLogger(ApplyController.class);
     
-    @@Resource
+    @Resource
     ApplyActiveService applyActiveService;
     
     @Resource
@@ -93,21 +93,15 @@ public class ApplyController extends BaseController{
         if (exitAdministrator(user))
             return ResponseResult.error(HttpCodeEnum.FORBIDDEN);
         Boolean result = applyActiveService.verifyActive(ids);
-        if (result) 
-            logger.info("verify those actives[{}] success", ids.toString());
+        if (result) logger.info("verify those actives[{}] success", ids.toString());
             return ResponseResult.success(VerifyVO.builder().success(result).build());
-        
-            
     }
     
     @PostMapping(Const.API_URL + "/orderVaccine")
     public ResponseResult<VerifyVO> orderVaccine(@CurrentUser User user, @RequestBody @Valid VaccineDTO vaccineDTO){
         Boolean result = vaccineOrderService.order(user, vaccineDTO);
-        if (result){
-            logger.info("order {} for {} successfully ",vaccineDTO.getVaccinename(), user.getUserName());
+        if (result) logger.info("order {} for {} successfully ",vaccineDTO.getVaccinename(), user.getUserName());
             return ResponseResult.success(VerifyVO.builder().success(result).build());
-        }
-        return ResponseResult.success(VerifyVO.builder().success(result).build());
     }
     
     
