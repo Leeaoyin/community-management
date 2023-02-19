@@ -26,7 +26,7 @@ public class VaccineOrderServiceImpl implements VaccineOrderService {
         vaccineOrder.setVaccineName(vaccineDTO.getVaccinename());
         vaccineOrder.setOrderTime(vaccineDTO.getOrdertime());
         vaccineOrder.setCreateTime(new Date());
-        vaccineOrder.setState(vaccineDTO.getOrdertime().before(new Date()) ? 0 : 1);
+        vaccineOrder.setState(vaccineDTO.getOrdertime().before(new Date()) ? 1 : 0);
         return vaccineOrderMapper.insertSelective(vaccineOrder) > 0;
     }
 }
