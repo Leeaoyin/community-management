@@ -5,6 +5,7 @@ import org.management.core.application.common.annotation.CurrentUser;
 import org.management.core.application.common.enums.HttpCodeEnum;
 import org.management.core.application.common.param.dto.ActiveDTO;
 import org.management.core.application.common.param.dto.MaterialDTO;
+import org.management.core.application.common.param.dto.VaccineDTO;
 import org.management.core.application.common.param.dto.VerifyDTO;
 import org.management.core.application.common.param.result.ResponseResult;
 import org.management.core.application.common.param.vo.ActiveVO;
@@ -15,6 +16,7 @@ import org.management.core.domain.handler.ActiveHandler;
 import org.management.core.domain.handler.MaterialHandler;
 import org.management.core.domain.service.ApplyActiveService;
 import org.management.core.domain.service.ApplyMaterialService;
+import org.management.core.domain.service.VaccineOrderService;
 import org.management.core.infrastructure.repository.po.ApplyActive;
 import org.management.core.infrastructure.repository.po.ApplyMaterial;
 import org.management.core.infrastructure.repository.po.User;
@@ -36,11 +38,14 @@ public class ApplyController extends BaseController{
     
     private static final Logger logger = LoggerFactory.getLogger(ApplyController.class);
     
-    @Autowired
+    @@Resource
     ApplyActiveService applyActiveService;
     
     @Resource
     ApplyMaterialService applyMaterialService;
+    
+    @Resource
+    VaccineOrderService vaccineOrderService;
     
     @PostMapping(value = Const.API_URL+"/applyActive")
     public ResponseResult<ActiveVO> applyActive(@CurrentUser User user, @RequestBody @Valid List<ActiveDTO> activeDTOList){
@@ -93,6 +98,16 @@ public class ApplyController extends BaseController{
             return ResponseResult.success(VerifyVO.builder().success(result).build());
         
             
+    }
+    
+    @PostMapping(Const.API_URL + "/orderVaccine")
+    public ResponseResult<VerifyVO> orderVaccine(@CurrentUser User user, @RequestBody @Valid VaccineDTO vaccineDTO){
+        Boolean result = vaccineOrderService.order(user, vaccineDTO);
+        if (result){
+            logger.info("order {} for {} successfully ",vaccineDTO.getVaccinename(), user.getUserName());
+            return ResponseResult.success(VerifyVO.builder().success(result).build());
+        }
+        return ResponseResult.success(VerifyVO.builder().success(result).build());
     }
     
     
