@@ -1,5 +1,6 @@
 package org.management.core.domain.service.impl;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.management.core.application.common.param.dto.VaccineDTO;
 import org.management.core.application.common.param.vo.OrderedVaccineVO;
 import org.management.core.domain.service.VaccineOrderService;
@@ -40,14 +41,15 @@ public class VaccineOrderServiceImpl implements VaccineOrderService {
         example.createCriteria().andEqualTo("userId",user.getId());
         List<VaccineOrder> vaccineOrders = vaccineOrderMapper.selectByExample(example);
         List<OrderedVaccineVO> vo = new ArrayList<>(vaccineOrders.size());
-        vaccineOrders.forEach(e-> vo.add(
-                OrderedVaccineVO
-                .builder()
-                .vaccinename(e.getVaccineName())
-                .phone(e.getPhone())
-                .state(e.getState())
-                .ordertime(e.getOrderTime()).build()));
-                
+        if (CollectionUtils.isNotEmpty(vaccineOrders)){
+            vaccineOrders.forEach(e-> vo.add(
+                    OrderedVaccineVO
+                            .builder()
+                            .vaccinename(e.getVaccineName())
+                            .phone(e.getPhone())
+                            .state(e.getState())
+                            .ordertime(e.getOrderTime()).build()));
+        }
         return vo;
     }
 }
