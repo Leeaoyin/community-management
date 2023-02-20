@@ -81,7 +81,7 @@ CREATE TABLE user_info (
 	PRIMARY KEY (  id  )
 ) ENGINE = INNODB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8mb3 COMMENT = '住户信息表';
 ```
-## 接口
+## 接口设计
 ### 1、权限接口
 #### 登录
 url：/api/login
@@ -215,7 +215,7 @@ method：POST
     "message": "success"
 }
 ```
-##### 获取列表
+##### 获取当前用户申请列表
 url：/api/getActives
 method：GET
 响应字段：
@@ -302,7 +302,7 @@ method：POST
 }
 ```
 
-##### 获取列表
+##### 获取当前用户申请列表
 url：/api/getMaterials
 method：GET
 响应模板：
@@ -340,7 +340,74 @@ method：GET
 ```
 
 ### 4、疫苗预约
+url：/api/orderVaccine
+method：POST
+请求参数：
 
+| 字段 | 类型 | 必须 | 备注 |
+| --- | --- | --- | --- |
+| phone | string | true | 电话 |
+| vaccinename | string | true | 疫苗名称 |
+| ordertime | date | true | 预约时间 |
+
+请求模板：
+```json
+{
+    "phone":"10086",
+    "vaccinename":"瞎打疫苗",
+    "ordertime":"2023-10-26T11:47:12.000Z"
+}
+```
+响应字段：
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| success | bool | 添加成功 |
+
+响应模板：
+```json
+{
+    "code": 200,
+    "data": {
+        "success": true
+    },
+    "message": "success"
+}
+```
+
+##### 获取当前用户预约列表
+url：/api/getOrderedVaccine
+method：GET
+响应字段：
+
+| 字段 | 类型 | 描述 |
+| --- | --- | --- |
+| state | Int | 0未过期/1已过期 |
+| ordertime | date | 预约时间 |
+| phone | string | 预约手机号 |
+| vaccinename | string | 所预约名称 |
+
+响应模板：
+```json
+{
+    "code": 200,
+    "data": [
+        {
+            "ordertime": "2023-10-26 19:47:12",
+            "phone": "10086",
+            "state": 0,
+            "vaccinename": "科兴疫苗"
+        },
+        {
+            "ordertime": "2023-10-26 19:47:12",
+            "phone": "10086",
+            "state": 0,
+            "vaccinename": "瞎打疫苗"
+        }
+    ],
+    "message": "success"
+}
+```
 ### 5、添加用户信息
 url：/api/addUserInfo
 method：POST
@@ -454,3 +521,6 @@ method：POST
 ```
 
 ##### 
+
+## 
+
