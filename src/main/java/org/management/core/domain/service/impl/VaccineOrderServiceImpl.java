@@ -10,6 +10,7 @@ import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class VaccineOrderServiceImpl implements VaccineOrderService {
@@ -28,5 +29,12 @@ public class VaccineOrderServiceImpl implements VaccineOrderService {
         vaccineOrder.setCreateTime(new Date());
         vaccineOrder.setState(vaccineDTO.getOrdertime().before(new Date()) ? 1 : 0);
         return vaccineOrderMapper.insertSelective(vaccineOrder) > 0;
+    }
+
+    @Override
+    public List<VaccineOrder> getAll(User user) {
+        Example example = new Example(VaccineOrder.class);
+        example.createCriteria().andEqualTo("userId",user.getId());
+        return vaccineOrderMapper.selectByExample(example);
     }
 }

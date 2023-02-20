@@ -20,6 +20,7 @@ import org.management.core.domain.service.VaccineOrderService;
 import org.management.core.infrastructure.repository.po.ApplyActive;
 import org.management.core.infrastructure.repository.po.ApplyMaterial;
 import org.management.core.infrastructure.repository.po.User;
+import org.management.core.infrastructure.repository.po.VaccineOrder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,6 +103,11 @@ public class ApplyController extends BaseController{
         Boolean result = vaccineOrderService.order(user, vaccineDTO);
         if (result) logger.info("order {} for {} successfully ",vaccineDTO.getVaccinename(), user.getUserName());
             return ResponseResult.success(VerifyVO.builder().success(result).build());
+    }
+    
+    @GetMapping(value = Const.API_URL + "/getOrderedVaccine")
+    public ResponseResult<List<VaccineOrder>> getAllOrderVaccine(@CurrentUser User user){
+        return ResponseResult.success(vaccineOrderService.getAll(user));
     }
     
     
