@@ -1,6 +1,7 @@
 package org.management.core.domain.service;
 
 import org.management.core.application.common.param.dto.VaccineDTO;
+import org.management.core.application.common.param.vo.OrderedVaccineVO;
 import org.management.core.infrastructure.repository.po.User;
 import org.management.core.infrastructure.repository.po.VaccineOrder;
 
@@ -21,5 +22,5 @@ public interface VaccineOrderService {
      * @param user
      * @return
      */
-    List<VaccineOrder> getAll(User user);
+    List<OrderedVaccineVO> getAll(User user);
 }

@@ -1,6 +1,7 @@
 package org.management.core.domain.service.impl;
 
 import org.management.core.application.common.param.dto.VaccineDTO;
+import org.management.core.application.common.param.vo.OrderedVaccineVO;
 import org.management.core.domain.service.VaccineOrderService;
 import org.management.core.infrastructure.repository.mapper.VaccineOrderMapper;
 import org.management.core.infrastructure.repository.po.User;
@@ -9,8 +10,10 @@ import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class VaccineOrderServiceImpl implements VaccineOrderService {
@@ -32,9 +35,19 @@ public class VaccineOrderServiceImpl implements VaccineOrderService {
     }
 
     @Override
-    public List<VaccineOrder> getAll(User user) {
+    public List<OrderedVaccineVO> getAll(User user) {
         Example example = new Example(VaccineOrder.class);
         example.createCriteria().andEqualTo("userId",user.getId());
-        return vaccineOrderMapper.selectByExample(example);
+        List<VaccineOrder> vaccineOrders = vaccineOrderMapper.selectByExample(example);
+        List<OrderedVaccineVO> vo = new ArrayList<>(vaccineOrders.size());
+        vaccineOrders.forEach(e-> vo.add(
+                OrderedVaccineVO
+                .builder()
+                .vaccinename(e.getVaccineName())
+                .phone(e.getPhone())
+                .state(e.getState())
+                .ordertime(e.getOrderTime()).build()));
+                
+        return vo;
     }
 }

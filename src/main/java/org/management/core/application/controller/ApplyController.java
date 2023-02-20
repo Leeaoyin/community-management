@@ -10,6 +10,7 @@ import org.management.core.application.common.param.dto.VerifyDTO;
 import org.management.core.application.common.param.result.ResponseResult;
 import org.management.core.application.common.param.vo.ActiveVO;
 import org.management.core.application.common.param.vo.MaterialVO;
+import org.management.core.application.common.param.vo.OrderedVaccineVO;
 import org.management.core.application.common.param.vo.VerifyVO;
 import org.management.core.domain.event.Const;
 import org.management.core.domain.handler.ActiveHandler;
@@ -110,7 +111,7 @@ public class ApplyController extends BaseController{
     }
     
     @GetMapping(value = Const.API_URL + "/getOrderedVaccine")
-    public ResponseResult<List<VaccineOrder>> getAllOrderVaccine(@CurrentUser User user){
+    public ResponseResult<List<OrderedVaccineVO>> getAllOrderVaccine(@CurrentUser User user){
         return ResponseResult.success(vaccineOrderService.getAll(user));
     }
     
