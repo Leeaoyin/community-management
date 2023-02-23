@@ -9,8 +9,7 @@ import org.management.core.infrastructure.utils.TokenUtils;
 import org.management.core.BaseTest;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Date;
-import java.util.Objects;
+import java.util.*;
 
 public class UserServiceTest extends BaseTest {
     
@@ -20,6 +19,9 @@ public class UserServiceTest extends BaseTest {
     TokenUtils tokenUtils;
     @Test
     public void testLogin(){
+        Collections.synchronizedMap(new HashMap<>(10));
+
+        List<User> synchronizedList = Collections.synchronizedList(new ArrayList<User>(10));
         UserEntriesDTO userEntriesDTO = UserEntriesDTO.builder()
                 .username("root")
                 .password("123456")
