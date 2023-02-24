@@ -14,6 +14,7 @@ import org.management.core.infrastructure.repository.po.UserInfo;
 import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -85,16 +86,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserListVO> getUserList(User user) {
-        List<UserInfo> userInfos = userInfoMapper.selectAll();
-        List<UserListVO> userListVOList = userInfos.stream().map(userInfo -> {
-            return UserListVO.builder()
-                    .username(user.getUserName())
-                    .email(userInfo.getEmail())
-                    .phone(userInfo.getPhone())
-                    .roomnumber(userInfo.getRoomNumber())
-                    .healthstate(userInfo.getHealthState())
-                    .build();
-        }).collect(Collectors.toList());
+        List<User> userList = userMapper.selectAll();
+        List<UserListVO> userListVOList = new ArrayList<UserListVO>(userList.size());
+                userList.stream().forEach(
+                e->{
+                    Example example  = new Example(UserInfo.class);
+                    example.createCriteria().andEqualTo("userId",e.getId());
+                    UserInfo userInfo = userInfoMapper.selectOneByExample(example);
+                    if (Objects.nonNull(userInfo)){
+                        userListVOList.add(UserListVO.builder()
+                                .email(userInfo.getEmail())
+                                .username(e.getUserName())
+                                .phone(userInfo.getPhone())
+                                .roomnumber(userInfo.getRoomNumber())
+                                .healthstate(userInfo.getHealthState())
+                                .build());
+                    }
+                }
+        );
+        
         return userListVOList;
     }
 
