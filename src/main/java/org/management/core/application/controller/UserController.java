@@ -52,21 +52,25 @@ public class UserController extends BaseController{
     
     
     @PostMapping(Const.API_URL + "/register")
-    public ResponseResult<User> register(@RequestBody @Valid UserRegisterDTO userRegisterDTO){
-        User user = userService.userRegister(userRegisterDTO);
-        return ResponseResult.success(user);
-    }
-    
-    
-    @PostMapping(Const.API_URL + "/addUserInfo")
-    public ResponseResult<VerifyVO> addUserInfo(@CurrentUser User user, @RequestBody @Valid UserInfoDTO userInfoDTO){
-        Boolean result = userService.addUserInfo(user, userInfoDTO);
+    public ResponseResult<VerifyVO> register(@RequestBody @Valid UserRegisterDTO userRegisterDTO){
+        Boolean result = userService.userRegister(userRegisterDTO);
         if (result){
-            logger.info("add [{}] info successfully",user.getUserName());
+            logger.info("[{}] register successfully",userRegisterDTO.getUsername());
             return ResponseResult.success(VerifyVO.builder().success(result).build());
         }
         return ResponseResult.success(VerifyVO.builder().success(result).build());
     }
+    
+    
+//    @PostMapping(Const.API_URL + "/addUserInfo")
+//    public ResponseResult<VerifyVO> addUserInfo(@CurrentUser User user, @RequestBody @Valid UserInfoDTO userInfoDTO){
+//        Boolean result = userService.addUserInfo(user, userInfoDTO);
+//        if (result){
+//            logger.info("add [{}] info successfully",user.getUserName());
+//            return ResponseResult.success(VerifyVO.builder().success(result).build());
+//        }
+//        return ResponseResult.success(VerifyVO.builder().success(result).build());
+//    }
     
     @PostMapping(Const.API_URL + "/reportHealth")
     public ResponseResult<VerifyVO> reportState(@CurrentUser User user,@RequestBody @Valid ReportDTO reportDTO){

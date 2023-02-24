@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User userRegister(UserRegisterDTO userRegisterDTO) {
+    public Boolean userRegister(UserRegisterDTO userRegisterDTO) {
         if (Objects.nonNull(this.getByUserName(userRegisterDTO.getUsername()))){
             throw new ServerException("用户名已存在");
         }
@@ -63,7 +63,22 @@ public class UserServiceImpl implements UserService {
                 .createTime(new Date())
                 .build();
         userMapper.insertSelective(user);
-        return user;
+        Example example = new Example(UserInfo.class);
+        example.createCriteria().andEqualTo("userName",user.getUserName());
+        if (Objects.nonNull(userInfoMapper.selectOneByExample(example))){
+            throw new ServerException("信息已存在");
+        }
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserName(user.getUserName());
+        userInfo.setCreateTime(new Date());
+        Example userExample = new Example(User.class);
+        userExample.createCriteria().andEqualTo("userName",user.getUserName());
+        userInfo.setUserId(userMapper.selectOneByExample(userExample).getId());
+        userInfo.setHealthState(userRegisterDTO.getHealthstate());
+        userInfo.setRoomNumber(userRegisterDTO.getRoomnumber());
+        userInfo.setEmail(userRegisterDTO.getEmail());
+        userInfo.setPhone(userRegisterDTO.getPhone());
+        return userInfoMapper.insert(userInfo) > 0 ;
     }
 
     @Override

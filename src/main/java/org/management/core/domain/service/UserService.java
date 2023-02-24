@@ -24,7 +24,7 @@ public interface UserService {
     /**
      * register user
      */
-    User userRegister(UserRegisterDTO userRegisterDTO);
+    Boolean userRegister(UserRegisterDTO userRegisterDTO);
 
     /**
      * add user information

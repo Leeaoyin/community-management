@@ -21,6 +21,15 @@ public class UserRegisterDTO implements Serializable {
     private String password;
     @NotNull(message = "用户类型不能为空")
     private Integer usertype;
+
+    @NotBlank(message = "邮箱不能为空")
+    private String email;
+    @NotBlank(message = "电话不能为空")
+    private String phone;
+    @NotNull(message = "房间号不能为空")
+    private Integer roomnumber;
+    @NotNull(message = "健康状态不能为空")
+    private Integer healthstate;
     
     
 }
