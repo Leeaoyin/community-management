@@ -5,6 +5,7 @@ import org.management.core.application.common.exception.ServerException;
 import org.management.core.application.common.param.dto.UserEntriesDTO;
 import org.management.core.application.common.param.dto.UserInfoDTO;
 import org.management.core.application.common.param.dto.UserRegisterDTO;
+import org.management.core.application.common.param.vo.UserListVO;
 import org.management.core.domain.service.UserService;
 import org.management.core.infrastructure.repository.mapper.UserInfoMapper;
 import org.management.core.infrastructure.repository.mapper.UserMapper;
@@ -14,7 +15,9 @@ import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -78,6 +81,21 @@ public class UserServiceImpl implements UserService {
         userInfo.setEmail(userInfoDTO.getEmail());
         userInfo.setPhone(userInfoDTO.getPhone());
         return userInfoMapper.insert(userInfo) > 0;
+    }
+
+    @Override
+    public List<UserListVO> getUserList(User user) {
+        List<UserInfo> userInfos = userInfoMapper.selectAll();
+        List<UserListVO> userListVOList = userInfos.stream().map(userInfo -> {
+            return UserListVO.builder()
+                    .username(user.getUserName())
+                    .email(userInfo.getEmail())
+                    .phone(userInfo.getPhone())
+                    .roomnumber(userInfo.getRoomNumber())
+                    .healthstate(userInfo.getHealthState())
+                    .build();
+        }).collect(Collectors.toList());
+        return userListVOList;
     }
 
 

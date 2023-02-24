@@ -4,6 +4,7 @@ package org.management.core.application.controller;
 import org.management.core.application.common.annotation.CurrentUser;
 import org.management.core.application.common.param.dto.ReportDTO;
 import org.management.core.application.common.param.dto.UserInfoDTO;
+import org.management.core.application.common.param.vo.UserListVO;
 import org.management.core.application.common.param.vo.VerifyVO;
 import org.management.core.domain.event.Const;
 import org.management.core.application.common.param.dto.UserEntriesDTO;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class UserController extends BaseController{
@@ -74,5 +76,10 @@ public class UserController extends BaseController{
             return ResponseResult.success(VerifyVO.builder().success(res).build());
         }
         return ResponseResult.success(VerifyVO.builder().success(res).build());
+    }
+    
+    @PostMapping(Const.API_URL + "/getUserList")
+    public ResponseResult<List<UserListVO>> getUserList(@CurrentUser User user){
+        return ResponseResult.success(userService.getUserList(user));
     }
 }
