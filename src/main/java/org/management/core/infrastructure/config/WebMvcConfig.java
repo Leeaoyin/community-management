@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.GsonHttpMessageConverter;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -61,7 +62,6 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     @Override
     protected void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(currentUserMethodArgumentResolver());
-        argumentResolvers.add(requestJsonHandlerArgumentResolver());
         super.addArgumentResolvers(argumentResolvers);
     }
 
@@ -81,26 +81,11 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 
     @Override
     protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
-        FastJsonConfig fastJsonConfig = new FastJsonConfig();
-        fastJsonConfig.setSerializerFeatures(SerializerFeature.QuoteFieldNames,
-                SerializerFeature.WriteEnumUsingToString,
-                SerializerFeature.WriteMapNullValue,
-                SerializerFeature.WriteDateUseDateFormat,
-                SerializerFeature.DisableCircularReferenceDetect);
-        fastJsonConfig.setSerializeFilters((ValueFilter) (o, s, source) -> {
-            if (null != source && (source instanceof Long || source instanceof BigInteger) && source.toString().length() > 15) {
-                return source.toString();
-            } else {
-                return null == source ? EMPTY : source;
-            }
-        });
-
+        GsonHttpMessageConverter gsonConvert = new GsonHttpMessageConverter();
         //处理中文乱码问题
         List<MediaType> fastMediaTypes = new ArrayList<>();
         fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
-        fastConverter.setSupportedMediaTypes(fastMediaTypes);
-        fastConverter.setFastJsonConfig(fastJsonConfig);
-        converters.add(fastConverter);
+        gsonConvert.setSupportedMediaTypes(fastMediaTypes);
+        converters.add(gsonConvert);
     }
 }
