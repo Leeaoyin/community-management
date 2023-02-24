@@ -74,10 +74,13 @@ public class UserServiceImpl implements UserService {
         Example userExample = new Example(User.class);
         userExample.createCriteria().andEqualTo("userName",user.getUserName());
         userInfo.setUserId(userMapper.selectOneByExample(userExample).getId());
-        userInfo.setHealthState(userRegisterDTO.getHealthstate());
-        userInfo.setRoomNumber(userRegisterDTO.getRoomnumber());
-        userInfo.setEmail(userRegisterDTO.getEmail());
-        userInfo.setPhone(userRegisterDTO.getPhone());
+        if (Objects.nonNull(userRegisterDTO.getHealthstate())&&Objects.nonNull(userRegisterDTO.getRoomnumber())&&Objects.nonNull(userRegisterDTO.getEmail())&&Objects.nonNull(userRegisterDTO.getPhone())){
+            
+            userInfo.setEmail(userRegisterDTO.getEmail());
+            userInfo.setPhone(userRegisterDTO.getPhone());
+        }
+        userInfo.setHealthState(Objects.nonNull(userRegisterDTO.getHealthstate())?userRegisterDTO.getHealthstate():0);
+        userInfo.setRoomNumber(Objects.nonNull(userRegisterDTO.getRoomnumber())?userRegisterDTO.getRoomnumber():000);
         return userInfoMapper.insert(userInfo) > 0 ;
     }
 
