@@ -20,14 +20,15 @@ public class ApplyMaterialServiceImpl implements ApplyMaterialService {
     @Resource
     ApplyMaterialMapper applyMaterialMapper;
     @Override
-    public Boolean addMaterials(User user, List<ApplyMaterial> applyMaterials) {
-        List<ApplyMaterial> collect = applyMaterials.stream()
-                .peek(e -> {
-                    e.setUserId(user.getId());
-                    e.setCreateTime(new Date());
-                })
-                .collect(Collectors.toList());
-        return applyMaterialMapper.insertList(collect) > 0 ? true : false;
+    public Boolean addMaterials(User user, ApplyMaterial applyMaterials) {
+        ApplyMaterial param = new ApplyMaterial();
+        param.setUserId(user.getId());
+        param.setNum(applyMaterials.getNum());
+        param.setMaterialName(applyMaterials.getMaterialName());
+        param.setNum(applyMaterials.getNum());
+        param.setCreateTime(new Date());
+        
+        return applyMaterialMapper.insert(param) > 0 ? true : false;
     }
 
     @Override

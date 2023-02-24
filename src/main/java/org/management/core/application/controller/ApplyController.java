@@ -50,10 +50,8 @@ public class ApplyController extends BaseController{
     VaccineOrderService vaccineOrderService;
     
     @PostMapping(value = Const.API_URL+"/applyActive")
-    public ResponseResult<ActiveVO> applyActive(@CurrentUser User user, @RequestBody @Valid List<ActiveDTO> activeDTOList){
-        List<ApplyActive> serviceParam = new ArrayList<>(activeDTOList.size());
-        activeDTOList.forEach(e-> serviceParam.add(ActiveHandler.convertDTO2pojo(e)));
-        if (applyActiveService.addActives(user, serviceParam)){
+    public ResponseResult<ActiveVO> applyActive(@CurrentUser User user, @RequestBody @Valid ActiveDTO activeDTO){
+        if (applyActiveService.addActives(user, ActiveHandler.convertDTO2pojo(activeDTO))){
             logger.info("active has already applyed, wait for verifying");
             return ResponseResult.success(ActiveVO.builder().success(true).build());
         }
@@ -65,10 +63,8 @@ public class ApplyController extends BaseController{
     }
     
     @PostMapping(value = Const.API_URL + "/applyMaterial")
-    public ResponseResult<MaterialVO> applyMaterial(@CurrentUser User user , @RequestBody @Valid List<MaterialDTO> materialDTOS){
-        List<ApplyMaterial> serviceParam = new ArrayList<>(materialDTOS.size());
-        materialDTOS.forEach(e -> serviceParam.add(MaterialHandler.convertDTO2pojo(e)));
-        if (applyMaterialService.addMaterials(user, serviceParam)){
+    public ResponseResult<MaterialVO> applyMaterial(@CurrentUser User user , @RequestBody @Valid MaterialDTO materialDTO){
+        if (applyMaterialService.addMaterials(user, MaterialHandler.convertDTO2pojo(materialDTO))){
             logger.info("active has already applyed,wait for verifying");
             return ResponseResult.success(MaterialVO.builder().success(true).build());
         }

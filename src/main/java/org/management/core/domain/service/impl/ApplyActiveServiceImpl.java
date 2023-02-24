@@ -21,15 +21,17 @@ public class ApplyActiveServiceImpl implements ApplyActiveService {
     ApplyActiveMapper applyActiveMapper;
     
     @Override
-    public Boolean addActives(User user, List<ApplyActive> applyActives) {
-        List<ApplyActive> collect = applyActives.stream()
-                .peek(e -> {
-                    e.setUserId(user.getId());
-                    e.setCreateTime(new Date());
-                    e.setState(0);
-                })
-                .collect(Collectors.toList());
-        return applyActiveMapper.insertList(collect) > 0;
+    public Boolean addActives(User user, ApplyActive applyActives) {
+
+        ApplyActive collect = new ApplyActive();
+        collect.setUserId(user.getId());
+        collect.setCreateTime(new Date());
+        collect.setState(0);
+        collect.setReason(applyActives.getReason());
+        collect.setActiveType(applyActives.getActiveType());
+        collect.setFamilyFriend(applyActives.getFamilyFriend());
+        collect.setActiveTime(applyActives.getActiveTime());
+        return applyActiveMapper.insert(collect) > 0;
     }
 
     @Override

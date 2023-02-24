@@ -15,7 +15,7 @@ public interface ApplyActiveService {
      * @param applyActives
      * @return
      */
-    Boolean addActives(User user, List<ApplyActive> applyActives);
+    Boolean addActives(User user, ApplyActive applyActives);
 
     /**
      * get unchecked active of this user

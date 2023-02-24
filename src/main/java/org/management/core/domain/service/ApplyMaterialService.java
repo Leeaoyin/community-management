@@ -15,7 +15,7 @@ public interface ApplyMaterialService {
      * @param applyMaterials
      * @return
      */
-    Boolean addMaterials(User user, List<ApplyMaterial> applyMaterials);
+    Boolean addMaterials(User user, ApplyMaterial applyMaterials);
 
     /**
      * get unchecked materials of this user
