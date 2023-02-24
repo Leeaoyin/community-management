@@ -26,10 +26,10 @@ public interface ApplyActiveService {
 
     /**
      * verify active's state 
-     * @param ids
+     * @param id
      * @return
      */
-    Boolean verifyActive(List<VerifyDTO> ids);
+    Boolean verifyActive(VerifyDTO id);
     
     List<ApplyActive> getAll(User user);
 }

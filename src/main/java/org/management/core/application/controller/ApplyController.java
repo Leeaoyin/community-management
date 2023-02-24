@@ -87,7 +87,7 @@ public class ApplyController extends BaseController{
     }
     
     @PostMapping(value = Const.API_URL + "/verifyActives")
-    public ResponseResult<VerifyVO> verifyActive(@CurrentUser User user, @RequestBody List<VerifyDTO> ids){
+    public ResponseResult<VerifyVO> verifyActive(@CurrentUser User user, @RequestBody VerifyDTO ids){
         if (exitAdministrator(user))
             return ResponseResult.error(HttpCodeEnum.FORBIDDEN);
         Boolean result = applyActiveService.verifyActive(ids);

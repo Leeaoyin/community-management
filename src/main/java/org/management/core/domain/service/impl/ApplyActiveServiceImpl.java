@@ -42,10 +42,10 @@ public class ApplyActiveServiceImpl implements ApplyActiveService {
 
 
     @Override
-    public Boolean verifyActive(List<VerifyDTO> ids) {
-        List<Integer> params = ids.stream().map(e->e.getId()).collect(Collectors.toList());
+    public Boolean verifyActive(VerifyDTO verifyDTO) {
+        
         Example example = new Example(ApplyActive.class);
-        example.createCriteria().andIn("id",params);
+        example.createCriteria().andEqualTo("id",verifyDTO.getId());
         ApplyActive applyActive = new ApplyActive();
         applyActive.setState(1);
         return applyActiveMapper.updateByExampleSelective(applyActive,example) > 0;
