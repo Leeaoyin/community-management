@@ -30,7 +30,7 @@ public final class Const {
     /**
      * Token header名称
      */
-    public static final String TOKEN_HEADER_STRING = "Token";
+    public static final String TOKEN_HEADER_STRING = "Authorization";
     /**
      * 当前用户
      */

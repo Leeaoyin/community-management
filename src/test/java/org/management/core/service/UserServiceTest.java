@@ -19,6 +19,7 @@ public class UserServiceTest extends BaseTest {
     TokenUtils tokenUtils;
     @Test
     public void testLogin(){
+        
         Collections.synchronizedMap(new HashMap<>(10));
 
         List<User> synchronizedList = Collections.synchronizedList(new ArrayList<User>(10));
