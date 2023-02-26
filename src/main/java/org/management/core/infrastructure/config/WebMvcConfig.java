@@ -70,10 +70,10 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 
         registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/META-INF/resources/")
-                .addResourceLocations("classpath:/META-INF/resources/webjars")
-                .addResourceLocations("classpath:/static/")
-                .addResourceLocations("classpath:/static/page/")
-                .addResourceLocations("classpath:/static/templates/")
+//                .addResourceLocations("classpath:/META-INF/resources/webjars")
+//                .addResourceLocations("classpath:/static/")
+//                .addResourceLocations("classpath:/static/page/")
+//                .addResourceLocations("classpath:/static/templates/")
                 .addResourceLocations("classpath:/frontend-ui/");
 
     }
