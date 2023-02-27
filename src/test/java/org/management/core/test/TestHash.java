@@ -16,7 +16,7 @@ public class TestHash extends BaseTest {
     public void test(){
         String hashString = md5HashCodeToString("D:\\408\\ds.pdf");
         String firsthash = "ebbdfe017625a8f85efaaa0c56590649";
-        System.out.println(hashString);
+//        System.out.println(hashString);
     }
 
 
